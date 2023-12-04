@@ -30,13 +30,6 @@ def replace_words(puzzle: list[str]) -> list[str]:
         for word in words:
             index = words.index(word)
             puzzle[line] = puzzle[line].replace(word, f"{word[0]}{index}{word[-1]}")
-    return puzzle
 
-
-numbers: list[int] = []
-
-numbers = get_numbers(puzzle)
-print("Part 1:", sum(numbers))
-
-numbers = get_numbers(replace_words(puzzle))
-print("Part 2:", sum(numbers))
+print("Part 1:", sum(get_numbers(puzzle)))
+print("Part 2:", sum(get_numbers(replace_words(puzzle))))
