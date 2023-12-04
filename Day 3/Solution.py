@@ -30,13 +30,15 @@ class Cell:
         
 cells = [
     [
-        Cell(row, column, puzzle[row][column])
+        Cell(row, column, value)
         for column in range(len(puzzle[0]))
+        if (value := puzzle[row][column]) != "."
     ]
     for row in range(len(puzzle))
-    if (value := puzzle[row][column]) != "."
 ]
-    
+
+def adjacent_cells(cell: Cell, cells: list[Cell]) -> list[Cell]:
+    pass
 
 def is_symbol(row: int, column: int) -> bool:
     value = puzzle[row][column]
