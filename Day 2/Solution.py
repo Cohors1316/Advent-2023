@@ -42,12 +42,8 @@ class Game:
             blue = round.blue if round.blue > blue else blue
         return red * green * blue
 
-
-games = [
-    game.number
-    for line in puzzle
-    if (game := Game(line)).within_limit(red=12, green=13, blue=14)
-]
-powers = [Game(line).minimum_power for line in puzzle]
-print(f"Part 1: {sum(games)}")
-print(f"Part 2: {sum(powers)}")
+games = [Game(line) for line in puzzle]
+p1 = [game.number for game in games if game.within_limit(12, 13, 14)
+p2 = [game.minimum_power for game in games]
+print(f"Part 1: {sum(p1)}")
+print(f"Part 2: {sum(p2)}")
