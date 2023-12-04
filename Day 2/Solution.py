@@ -33,6 +33,7 @@ class Game:
                 return False
         return True
 
+    @property
     def minimum_power(self) -> int:
         red, green, blue = 0, 0, 0
         for round in self.rounds:
@@ -47,6 +48,6 @@ games = [
     for line in puzzle
     if (game := Game(line)).within_limit(red=12, green=13, blue=14)
 ]
-powers = [Game(line).minimum_power() for line in puzzle]
+powers = [Game(line).minimum_power for line in puzzle]
 print(f"Part 1: {sum(games)}")
 print(f"Part 2: {sum(powers)}")
