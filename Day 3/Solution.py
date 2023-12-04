@@ -10,6 +10,34 @@ file.close()
 # This is no where near optimized, I was just trying to come up with a solution that worked
 
 
+class Cell:
+    row: int
+    column: int
+    value: str
+    
+    def __init__(self, row, column, value):
+        self.row = row
+        self.column = column
+        self.value = value
+
+    @property
+    def is_number(self) -> bool:
+        return self.value.isnumeric()
+        
+    @property
+    def is_gear(self) -> bool:
+        return self.value == "*"
+        
+cells = [
+    [
+        Cell(row, column, puzzle[row][column])
+        for column in range(len(puzzle[0]))
+    ]
+    for row in range(len(puzzle))
+    if (value := puzzle[row][column]) != "."
+]
+    
+
 def is_symbol(row: int, column: int) -> bool:
     value = puzzle[row][column]
     if value.isnumeric() or value == ".":
